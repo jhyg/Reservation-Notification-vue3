@@ -41,7 +41,11 @@ export default class BaseRepository{
             temp = await this.axios.get(this.fixUrl(`/${this.path}`));
          }
 
-         return await this.afterProcess(temp.data._embedded[this.path]);
+         if(temp.data._embedded){
+            return await this.afterProcess(temp.data._embedded[this.path]);
+         } else {
+            return await this.afterProcess(temp.data);
+         }
 
     }
 
@@ -56,9 +60,13 @@ export default class BaseRepository{
     }
 
     async delete(entity){
-        await this.axios.delete(this.fixUrl(entity._links.self.href))
+        if(entity._links){
+            await this.axios.delete(this.fixUrl(entity._links.self.href))
+            return await this.find(null)
+        } else {
+            await this.axios.delete(this.fixUrl(`/${this.path}/${entity.taskId}`))
+        }
 
-        return await this.find(null)
     }
 
     async invoke(entity, link, params) {
