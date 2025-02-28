@@ -1,18 +1,33 @@
 <template>
     <div>
-        <String label="TaskId" v-model="value.taskId" :editMode="editMode"/>
-        <String label="UserId" v-model="value.userId" :editMode="editMode"/>
-        <String label="Title" v-model="value.title" :editMode="editMode"/>
-        <String label="Description" v-model="value.description" :editMode="editMode"/>
-        <Date label="DueDate" v-model="value.dueDate" :editMode="editMode"/>
-        <v-divider class="border-opacity-50 my-divider my-2"></v-divider>
+        <String
+            label="TaskId"
+            v-model="value.taskId"
+            :editMode="editMode"
+        />
+        <String
+            label="UserId"
+            v-model="value.userId"
+            :editMode="editMode"
+        />
+        <String
+            label="Title"
+            v-model="value.title"
+            :editMode="editMode"
+        />
+        <String
+            label="Description"
+            v-model="value.description"
+            :editMode="editMode"
+        />
+        <Date
+            label="DueDate"
+            v-model="value.dueDate"
+            :editMode="editMode"
+        />
         <v-row class="ma-0 pa-0">
             <v-spacer></v-spacer>
-            <v-btn
-                width="64px"
-                color="primary"
-                @click="save"
-            >
+            <v-btn width="64px" color="primary" @click="save">
                 저장
             </v-btn>
         </v-row>
@@ -21,7 +36,6 @@
 
 
 <script>
-
 import BaseEntity from './base-ui/BaseEntity.vue'
 
 export default {

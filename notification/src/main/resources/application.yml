@@ -31,12 +31,12 @@ spring:
         event-in:
           group: notification
 #<<< EDA / Topic Name
-          destination: registrationalarm
+          destination: registrationalarmvue
 #>>> EDA / Topic Name
           contentType: application/json
         event-out:
 #<<< EDA / Topic Name
-          destination: registrationalarm
+          destination: registrationalarmvue
 #>>> EDA / Topic Name
           contentType: application/json
 
@@ -75,10 +75,10 @@ spring:
       bindings:
         event-in:
           group: notification
-          destination: registrationalarm
+          destination: registrationalarmvue
           contentType: application/json
         event-out:
-          destination: registrationalarm
+          destination: registrationalarmvue
           contentType: application/json
 
 

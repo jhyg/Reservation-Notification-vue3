@@ -11,6 +11,7 @@ import registrationalarm.ReservationApplication;
 import registrationalarm.domain.ReservationCreated;
 import registrationalarm.domain.ReservationDeleted;
 import registrationalarm.domain.ReservationUpdated;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "Reservation_table")
@@ -21,13 +22,23 @@ public class Reservation {
     @Id
     private String taskId;
 
-    private String userId;
+    @ElementCollection
+    @CollectionTable(
+        name = "reservation_target_users",
+        joinColumns = @JoinColumn(name = "task_id")
+    )
+    @Column(name = "target_user_id")
+    private List<String> targetUserIds;
 
     private String title;
 
     private String description;
 
     private Date dueDate;
+
+    @Column(name = "is_now")
+    @JsonProperty("isNow")
+    private boolean now;
 
     @PostPersist
     public void onPostPersist() {

@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 import registrationalarm.NotificationApplication;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "Notification_table")
@@ -16,12 +17,17 @@ import registrationalarm.NotificationApplication;
 public class Notification {
 
     @Id
-    private String notificationId;
-
-    private String userId;
-
     private String taskId;
 
+    @ElementCollection
+    @CollectionTable(
+        name = "notification_target_users",
+        joinColumns = @JoinColumn(name = "task_id")
+    )
+    @Column(name = "target_user_id")
+    private List<String> targetUserIds;
+    
+    @JsonProperty("dueDate")
     private Date dueDate;
 
     public static NotificationRepository repository() {
