@@ -1,6 +1,3 @@
-## Model
-www.msaez.io/#/65217813/storming/registration-alarm
-
 ## Before Running Services
 ### Make sure there is a Kafka server running
 ```
@@ -61,4 +58,5 @@ curl -X POST http://localhost:8088/reservations \
     "dueDate": null
 }'
 ```
-
+## PBC 적용 방법
+https://github.com/kyusooK/Cluster-distribute-rule/blob/main/README.md
