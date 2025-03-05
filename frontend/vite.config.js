@@ -47,18 +47,24 @@ export default defineConfig({
       'apexcharts': fileURLToPath(new URL('node_modules/apexcharts-clevision', import.meta.url)),
     },
   },
-  build: {
-    chunkSizeWarningLimit: 5000,
-  },
   optimizeDeps: {
     exclude: ['vuetify'],
     entries: [
       './src/**/*.vue',
     ],
   },
+  build: {
+    chunkSizeWarningLimit: 5000,
+    lib: {
+      entry: './src/web-component.js',
+      name: 'NotiApp',
+      fileName: () => 'noti-app.js',
+      formats: ['umd'],
+    },
+  },
   server: {
     host: '0.0.0.0',
-    port: 8080,
+    port: 8050,
   },
   css: {
     preprocessorOptions: {
